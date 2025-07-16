@@ -1,7 +1,7 @@
 # Base PHP image
 FROM php:8.2-fpm
 
-# Install system dependencies and PHP extensions
+# Install dependencies
 RUN apt-get update && apt-get install -y \
     build-essential \
     libpng-dev \
@@ -19,21 +19,22 @@ RUN apt-get update && apt-get install -y \
 # Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Set the working directory inside container
+# Set working directory
 WORKDIR /var/www
 
-# Copy Laravel project files to container
+# Copy files
 COPY . .
 
-# Install Laravel dependencies
+# Install dependencies
 RUN composer install --optimize-autoloader --no-dev
 
-# Set correct permissions
+# Permissions
 RUN chown -R www-data:www-data /var/www \
     && chmod -R 775 /var/www/storage
 
-# Expose port 8000 for Render
+# Expose port
 EXPOSE 8000
 
-# Command to run Laravel server
-CMD php artisan serve --host=0.0.0.0 --port=8000
+# 👇 Use the correct public path
+CMD php artisan serve --host=0.0.0.0 --port=8000 --public=/var/www/public
+
