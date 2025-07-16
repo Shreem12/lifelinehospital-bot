@@ -59,3 +59,23 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+# Lifeline Hospital WhatsApp Bot
+
+A Laravel-powered WhatsApp bot for managing hospital operations using Meta's WhatsApp API.
+
+## Features
+- Patient registration
+- Appointment booking
+- Doctor assignment
+- WhatsApp integration
+- Admin dashboard (coming soon)
+
+## Installation
+1. Clone this repo
+2. Run `composer install`
+3. Configure `.env` with DB and API credentials
+4. Run `php artisan migrate`
+5. Start server with `php artisan serve`
+
+## Author
+Shrikant Maid
